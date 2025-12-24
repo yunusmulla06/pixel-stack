@@ -1,65 +1,100 @@
-import Image from "next/image";
+import Card from './components/Card'
+import HeroSection from './components/HeroSection'
+import Section from './components/Section'
+import Icon1 from '../../public/images/web-development.svg'
+import Icon2 from '../../public/images/full-stack-applications.svg'
+import Icon3 from '../../public/images/ui-ux-design.svg'
+import Icon4 from '../../public/images/logo-&-branding.svg'
+import Icon5 from '../../public/images/e-commerce-solutions.svg'
+import Icon6 from '../../public/images/cloud-hosting.svg'
+import fast from '../../public/images/fast-secure.svg'
+
 
 export default function Home() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+
+    const Services = [
+        {
+            icon: Icon1,
+            title: 'Web Development',
+            desc: 'Custom websites built with modern frameworks for optimal performance.'
+        },
+        {
+            icon: Icon2,
+            title: 'Full-Stack Applications',
+            desc: 'Scalable web applications from database to frontend deployment.'
+        },
+        {
+            icon: Icon3,
+            title: 'UI/UX Design',
+            desc: 'Beautiful, user-centered interfaces that drive engagement.'
+        },
+        {
+            icon: Icon4,
+            title: 'Logo & Branding',
+            desc: 'Memorable brand identities that make your business stand out.'
+        },
+        {
+            icon: Icon5,
+            title: 'E-commerce Solutions',
+            desc: 'Secure, conversion-optimized online stores for your products.'
+        },
+        {
+            icon: Icon6,
+            title: 'Cloud Hosting',
+            desc: 'Fast, reliable hosting with 99.9% uptime guarantee.'
+        },
+    ]
+    
+
+    const USP = [
+        {
+            icon: fast,
+            title: 'title',
+            desc: 'desc',
+        },
+        {
+            icon: fast,
+            title: 'title2',
+            desc: 'desc',
+        },
+        {
+            icon: fast,
+            title: 'title3',
+            desc: 'desc',
+        },
+        {
+            icon: fast,
+            title: 'title4',
+            desc: 'desc',
+        },
+    ]
+    return (
+        <main>
+            <Section className='h-screen overflow-visible flex items-center -mt-18'>
+                <HeroSection
+                    title='Powerful Websites & Brands That'
+                    subtitle='We turn ideas into impactful digital experiences — from web development to branding & cloud-powered solutions.'
+                    buttonLabel='Get a Free Quote'
+                    buttonLink="/contact" />
+            </Section>
+
+
+            <Section py='20' sectionTitle='Our Services' sectionDesc='Comprehensive digital solutions tailored to your business needs'>
+                <div className='grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6'>
+                    {Services.map((service, index) => (
+                        <Card className='bg-[rgba(255,255,255,0.03)] border-[rgba(255,255,255,0.08)]' key={index} icon={service.icon} title={service.title} description={service.desc} />
+                    ))}
+                </div>
+            </Section>
+
+            <Section py='20' sectionTitle='Why Choose PixelStack'>
+                <div className='grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-6'>
+                    {USP.map((usp, index) =>(
+                        <Card align='center' key={index} icon={usp.icon} title={usp.title} description={usp.desc} />
+                    ))}
+                    
+                </div>
+            </Section>
+        </main>
+    )
 }
